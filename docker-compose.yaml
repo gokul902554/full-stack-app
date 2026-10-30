@@ -1,0 +1,25 @@
+
+services:
+  frontend:
+    build: ./frontend
+    image: gokul2006karur/fullstack-frontend:1.0
+    container_name: frontend
+    ports:
+      - "3001:3000"
+    depends_on:
+      - backend
+    networks:
+      - fullstack-network
+
+  backend:
+    build: ./backend
+    image: gokul2006karur/fullstack-backend:1.0
+    container_name: backend
+    expose:
+      - "5000"
+    networks:
+      - fullstack-network
+
+networks:
+  fullstack-network:
+    driver: bridge
